@@ -7,6 +7,20 @@ class Metadata extends Component {
 		this.state = {}
 	}
 
+	padDigits(num) {
+		return ("0" + num).slice(-2)
+	}
+
+	renderNumber() {
+		return (
+			<span>
+				{this.props.currentSong.track ?
+					this.padDigits(this.props.currentSong.track.track_number)
+					: null}
+			</span>
+		)
+	}
+
 	renderTrack() {
 		return (
 			<span>
@@ -30,6 +44,9 @@ class Metadata extends Component {
 	render() {
 		return (
 	      <div className="metadata">
+	      	<div className="number">
+	      	{this.renderNumber()}
+	      	</div>
 	        <div className="track">
             {this.renderTrack()}
           </div>

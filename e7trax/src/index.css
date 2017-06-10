@@ -8,9 +8,10 @@ body {
 }
 
 .player {
-	background: url('/img/bg.jpg');
+	background: #000 url('/img/bg.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: bottom;
 	width: 100%;
 	height: 100vh;
 	position: relative;
@@ -45,6 +46,12 @@ body {
 	align-items: center;
 	justify-content: flex-end;
 	flex-flow: column nowrap;
+}
+
+.number {
+	width: 100%;
+	text-align: center;
+	font-size: 400%;	
 }
 
 .track {

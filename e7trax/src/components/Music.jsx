@@ -11,12 +11,14 @@ class Music extends Component {
     this.handlePlayStatus = this.handlePlayStatus.bind(this)
     this.handleSongPlaying = this.handleSongPlaying.bind(this)
     this.handleSongFinished = this.handleSongFinished.bind(this)
+    this.handleSongLoading = this.handleSongLoading.bind(this)
     this.state = {
       playStatus: Sound.status.STOPPED,
       elapsed: '00:00',
       total: '00:00',
       position: 0,
-      playFromPosition: 0
+      playFromPosition: 0,
+      loaded: false
     }
   }
 
@@ -41,6 +43,7 @@ class Music extends Component {
       this.setState({
         playStatus: status
       })
+      return status
     }
     return this.state.playStatus
   }
@@ -57,6 +60,18 @@ class Music extends Component {
     console.log('handleSongFinished')
   }
 
+  handleSongLoading(audio) {
+    const prevState = this.state.loaded
+    const state = (audio.bytesLoaded > 0)
+      && (audio.bytesLoaded === audio.bytesTotal)
+    if (prevState !== state) {
+      this.setState({
+        loaded: state
+      })
+    }
+    return state
+  }
+
   render() {
     return (
       <div className="music">
@@ -68,7 +83,8 @@ class Music extends Component {
             playStatus={this.handlePlayStatus(this.props.isPlaying)}
             onPlaying={this.handleSongPlaying}
             playFromPosition={this.state.playFromPosition}
-            onFinishedPlaying={this.handleSongFinished}/>
+            onFinishedPlaying={this.handleSongFinished}
+            onLoading={this.handleSongLoading}/>
       </div>
     )
   }

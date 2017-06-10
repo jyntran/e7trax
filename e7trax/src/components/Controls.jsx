@@ -7,6 +7,7 @@ class Controls extends Component {
   constructor(props) {
     super(props)
     this.onPlay = this.onPlay.bind(this)
+    this.onPause = this.onPause.bind(this)
     this.onBack = this.onBack.bind(this)
     this.onForward = this.onForward.bind(this)
     this.state = {
@@ -15,6 +16,10 @@ class Controls extends Component {
 
   onPlay() {
     this.props.actions.playTrack()
+  }
+
+  onPause() {
+    this.props.actions.pauseTrack()
   }
 
   onBack(currentSongIndex) {
@@ -35,7 +40,7 @@ class Controls extends Component {
             </div>
             { this.props.isPlaying ? 
               <div className="controls btn btn-pause"
-                onClick={() => this.onPlay()}>
+                onClick={() => this.onPause()}>
                 <i className="icon-pause"></i>
               </div>
             :

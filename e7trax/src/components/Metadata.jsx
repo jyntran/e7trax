@@ -43,7 +43,7 @@ class Metadata extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        currentSong: state.player.currentSong,
+        currentSong: state.player.currentSong
     };
 }
 

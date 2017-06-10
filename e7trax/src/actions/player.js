@@ -12,6 +12,12 @@ export const playTrack = () => {
 	}
 }
 
+export const pauseTrack = () => {
+	return {
+		type: 'pause'
+	}
+}
+
 export const backTrack = (currentSongIndex) => {
 	const songIndex = Math.max(0, currentSongIndex-1)
 	return {

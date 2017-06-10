@@ -16,18 +16,20 @@ export default(state = initialState, action) => {
 			}
 		case 'play':
 			return {
-				tracks: state.tracks,
-				currentSong: state.currentSong,
-				currentSongIndex: state.currentSongIndex,
-				isPlaying: !state.isPlaying
+				...state,
+				isPlaying: true
+			}
+		case 'pause': 
+			return {
+				...state,
+				isPlaying: false				
 			}
 		case 'backward':
 		case 'forward':
 			return {
-				tracks: state.tracks,
+				...state,
 				currentSong: state.tracks[action.index],
-				currentSongIndex: action.index,
-				isPlaying: state.isPlaying
+				currentSongIndex: action.index
 			}
 		default:
 			return state;

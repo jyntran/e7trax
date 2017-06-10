@@ -1,24 +1,61 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
-import NowPlaying from './NowPlaying.jsx';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as playerActions from '../actions/player';
 
-export default class Player extends Component {
-  componentDidMount() {
+import NowPlaying from '../containers/NowPlaying.jsx';
+
+class Player extends Component {
+  constructor(props) {
+    super(props)
+    this.getPlaylist = this.getPlaylist.bind(this)
+    this.storePlaylist = this.storePlaylist.bind(this)
+    this.state = {
+    }
+  }
+
+  componentWillMount(props) {
+    this.getPlaylist();
+  }
+
+  getPlaylist(props) {
+    let _this = this;
     Axios.get('/spotify')
       .then(function (response) {
-        console.log(response);
+        _this.storePlaylist(response.data)
       })
       .catch(function (err) {
         console.log(err);
-      });
+      })
+  }
+
+  storePlaylist(list) {
+    this.props.actions.storeTracks(list)
   }
 
 	render() {
 		return (
       <div className="player">
-        <NowPlaying/>
+        <NowPlaying />
       </div>
     )
 	}
 }
+
+function mapStateToProps(state, props) {
+    return {
+        tracks: state.player.tracks,
+        currentSong: state.player.currentSong,
+        isPlaying: state.player.isPlaying
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(playerActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

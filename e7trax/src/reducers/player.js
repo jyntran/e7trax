@@ -1,7 +1,6 @@
 const initialState = {
-	tracks: [],
-	currentSong: {},
-	currentSongIndex: null,
+	tracks: {},
+	currentIndex: null,
 	isPlaying: false
 }
 
@@ -9,10 +8,9 @@ export default(state = initialState, action) => {
 	switch (action.type) {
 		case 'store':
 			return {
+				...state,
 				tracks: action.tracks,
-				currentSong: action.currentSong,
-				currentSongIndex: 0,
-				isPlaying: false
+				currentIndex: action.currentIndex,
 			}
 		case 'play':
 			return {
@@ -28,8 +26,7 @@ export default(state = initialState, action) => {
 		case 'forward':
 			return {
 				...state,
-				currentSong: state.tracks[action.index],
-				currentSongIndex: action.index
+				currentIndex: action.currentIndex
 			}
 		default:
 			return state;

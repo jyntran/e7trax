@@ -1,8 +1,8 @@
-export const storeTracks = (list) => {
+export const storeTracks = (tracks) => {
 	return {
 		type: 'store',
-		tracks: list,
-		currentSong: list[0]
+		tracks: tracks,
+		currentIndex: 1
 	}
 }
 
@@ -18,19 +18,18 @@ export const pauseTrack = () => {
 	}
 }
 
-export const backTrack = (currentSongIndex) => {
-	const songIndex = Math.max(0, currentSongIndex-1)
+export const backTrack = (currentIndex) => {
+	const songIndex = Math.max(1, currentIndex-1)
 	return {
 		type: 'backward',
-		index: songIndex
+		currentIndex: songIndex
 	}
 }
 
-export const forwardTrack = (tracks, currentSongIndex) => {
-	const lastIndex = tracks.length-1
-	const songIndex = Math.min(lastIndex, currentSongIndex+1)
+export const forwardTrack = (currentIndex, numOfTracks) => {
+	const songIndex = Math.min(currentIndex+1, numOfTracks)
 	return {
 		type: 'forward',
-		index: songIndex
+		currentIndex: songIndex
 	}
 }

@@ -22,12 +22,12 @@ class Controls extends Component {
     this.props.actions.pauseTrack()
   }
 
-  onBack(currentSongIndex) {
-    this.props.actions.backTrack(currentSongIndex)
+  onBack(index) {
+    this.props.actions.backTrack(index)
   }
 
-  onForward(tracks, currentSongIndex) {
-    this.props.actions.forwardTrack(tracks, currentSongIndex)
+  onForward(index, numOfTracks) {
+    this.props.actions.forwardTrack(index, numOfTracks)
   }
 
     render() {
@@ -35,7 +35,7 @@ class Controls extends Component {
         <div className="controls">
           <div className="control-box">
             <div className="controls btn btn-back"
-              onClick={() => this.onBack(this.props.currentSongIndex)}>
+              onClick={() => this.onBack(this.props.currentIndex)}>
               <i className="icon-skip_previous"></i>
             </div>
             { this.props.isPlaying ? 
@@ -50,7 +50,7 @@ class Controls extends Component {
               </div>
             }
             <div className="controls btn btn-forward"
-              onClick={() => this.onForward(this.props.tracks, this.props.currentSongIndex)}>
+              onClick={() => this.onForward(this.props.currentIndex, this.props.numberOfTracks)}>
               <i className="icon-skip_next"></i>
             </div>
           </div>
@@ -61,9 +61,9 @@ class Controls extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        tracks: state.player.tracks,
-        currentSong: state.player.currentSong,
-        currentSongIndex: state.player.currentSongIndex,
+        numberOfTracks: Object.keys(state.player.tracks).length,
+        currentSong: state.player.tracks[state.player.currentIndex],
+        currentIndex: state.player.currentIndex,
         isPlaying: state.player.isPlaying
     };
 }

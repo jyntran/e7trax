@@ -14,8 +14,8 @@ class Metadata extends Component {
 	renderNumber() {
 		return (
 			<span>
-				{this.props.currentSong.track ?
-					this.padDigits(this.props.currentSong.track.track_number)
+				{this.props.currentSong ?
+					this.padDigits(this.props.currentIndex)
 					: null}
 			</span>
 		)
@@ -24,8 +24,8 @@ class Metadata extends Component {
 	renderTrack() {
 		return (
 			<span>
-				{this.props.currentSong.track ?
-					this.props.currentSong.track.name
+				{this.props.currentSong ?
+					this.props.currentSong.name
 					: null}
 			</span>
 		)
@@ -34,8 +34,8 @@ class Metadata extends Component {
 	renderArtist() {
 		return (
 			<span>
-				{this.props.currentSong.track ?
-					this.props.currentSong.track.artists[0].name
+				{this.props.currentSong ?
+					this.props.currentSong.artists[0].name
 					: null}
 			</span>
 		)
@@ -59,8 +59,12 @@ class Metadata extends Component {
 }
 
 function mapStateToProps(state, props) {
+    var currentIndex;
+    if (state.player.currentIndex !== null)
+      currentIndex = state.player.currentIndex.toString();
     return {
-        currentSong: state.player.currentSong
+        currentSong: state.player.tracks[currentIndex],
+        currentIndex: state.player.currentIndex
     };
 }
 

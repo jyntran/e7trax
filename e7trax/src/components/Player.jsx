@@ -32,7 +32,11 @@ class Player extends Component {
   }
 
   storePlaylist(list) {
-    this.props.actions.storeTracks(list)
+    var tracks = {}
+    list.forEach(function(obj, i) {
+      tracks[i+1] = obj.track
+    })
+    this.props.actions.storeTracks(tracks)
   }
 
 	render() {
@@ -47,7 +51,7 @@ class Player extends Component {
 function mapStateToProps(state, props) {
     return {
         tracks: state.player.tracks,
-        currentSong: state.player.currentSong,
+        currentSong: state.player.tracks[state.player.currentIndex],
         isPlaying: state.player.isPlaying
     };
 }

@@ -57,7 +57,7 @@ class Music extends Component {
   }
 
   handleSongFinished() {
-    console.log('handleSongFinished')
+    this.props.actions.backTrack(this.props.currentIndex)
   }
 
   handleSongLoading(audio) {
@@ -77,8 +77,8 @@ class Music extends Component {
       <div className="music">
           <Sound
             url={
-              this.props.currentSong.track ?
-              this.props.currentSong.track.preview_url
+              this.props.currentSong ?
+              this.props.currentSong.preview_url
               : '' }
             playStatus={this.handlePlayStatus(this.props.isPlaying)}
             onPlaying={this.handleSongPlaying}
@@ -92,7 +92,8 @@ class Music extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        currentSong: state.player.currentSong,
+        currentSong: state.player.tracks[state.player.currentIndex],
+        currentIndex: state.player.currentIndex,
         isPlaying: state.player.isPlaying
     };
 }

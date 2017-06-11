@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Karla');
 @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
 
+html, body {
+	overflow: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-family: "Karla", sans-serif;
-  overflow: hidden;
+  height: 100vh;
 }
 
 .player {
+	background: #222;
 }
 
 .main {
@@ -34,18 +39,19 @@ body {
 	background: #222;
 	color: #ddd;
 	width: 360px;
-    height: 100%;
-    position: fixed;
+    height: 100vh;
+    position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     transition: all 0.6s ease;
 }
 
 .menu {
     background: #0cc;
-    position: fixed;
+    position: absolute;
     width: 16px;
     height: 16px;
     padding: 8px;
@@ -151,7 +157,10 @@ body {
 .music-progress {
 	width: 100%;
 	height: 100%;
-	overflow: visible;
+	max-width: 500px;
+	max-height: 500px;
+	overflow-x: visible;
+	overflow-y: hidden;
 	transform: rotate(270deg) scaleY(-1);
 }
 
@@ -163,7 +172,7 @@ body {
 
 .playlist {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
     overflow-x: auto;
     transition: all 0.6s ease;
 }
@@ -172,10 +181,6 @@ body {
 	padding: 8px;
 	cursor: pointer;
     transition: all 0.4s;
-}
-
-.playlist-track:hover {
-    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.1));
 }
 
 .playlist-track.selected {
@@ -190,11 +195,51 @@ body {
 	font-style: italic;
 }
 
-.footer {
+.playlist::-webkit-scrollbar-track
+{
+	background-color: #222;
+}
+
+.playlist::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #555;
+}
+
+.playlist::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #555;
+}
+
+.header {
+	margin: auto 24px;
+	border-bottom: 1px solid #555;
+}
+
+.header h1 {
+	color: #eee;
+	font-family: "Share Tech Mono", monospace;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.about {	
+	padding: 16px;
     color: #999;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+}
+
+.about p, .about span {
+	font-size: 75%;
+}
+
+.about a {
+	color: #099;
+	transition: all 0.4s;
+}
+
+.about a {
+	color: #0cc;
 }
 
 @media (max-width: 400px) {

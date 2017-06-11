@@ -34,22 +34,22 @@ class Controls extends Component {
       return (
         <div className="controls">
           <div className="control-box">
-            <div className="controls btn btn-back"
+            <div className="btn btn-back"
               onClick={() => this.onBack(this.props.currentIndex)}>
               <i className="icon-skip_previous"></i>
             </div>
             { this.props.isPlaying ? 
-              <div className="controls btn btn-pause"
+              <div className="btn btn-pause"
                 onClick={() => this.onPause()}>
                 <i className="icon-pause"></i>
               </div>
             :
-              <div className="controls btn btn-play"
+              <div className="btn btn-play"
                 onClick={() => this.onPlay()}>
                 <i className="icon-play_arrow"></i>
               </div>
             }
-            <div className="controls btn btn-forward"
+            <div className="btn btn-forward"
               onClick={() => this.onForward(this.props.currentIndex, this.props.numberOfTracks)}>
               <i className="icon-skip_next"></i>
             </div>

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as playerActions from '../actions/player';
 
 import NowPlaying from '../containers/NowPlaying.jsx';
-import Playlist from '../components/Playlist.jsx';
+import Settings from '../containers/Settings.jsx';
 
 class Player extends Component {
   constructor(props) {
@@ -58,18 +58,13 @@ class Player extends Component {
 
 		return (
       <div className="player">
-        <div className="settings">
-          <Playlist />
-        </div>
+        <Settings />
         <div className={menuClass}
           onClick={this.handleDrawer}>
           <i className="icon-settings"></i>
         </div>
         <div className={mainClass}>
           <NowPlaying />
-          <div className="footer">
-            Eureka Seven &copy; Studio BONES, Funimation
-          </div>
         </div>
       </div>
     )

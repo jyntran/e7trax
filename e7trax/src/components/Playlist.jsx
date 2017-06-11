@@ -28,9 +28,9 @@ class Playlist extends Component {
         <li key={index}
           className={trackClass}
           onClick={() => this.onSelect(index)}>
-          <span>{tracks[index].name}</span>
+          <span className="track">{tracks[index].name}</span>
           <br/>
-          <span>{tracks[index].artists[0].name}</span>
+          <span className="artist">{tracks[index].artists[0].name}</span>
         </li>
       )
     })

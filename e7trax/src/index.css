@@ -23,6 +23,7 @@ body {
 	min-height: 100%;
 	left: 0;
 	position: relative;
+	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -45,10 +46,12 @@ body {
 .menu {
     background: #0cc;
     position: fixed;
+    width: 16px;
+    height: 16px;
     padding: 8px;
     left: 0;
     z-index: 5;
-    transition: all 0.6s ease;
+    transition: left 0.6s ease;
 }
 
 .main.open {
@@ -73,14 +76,16 @@ body {
 	position: absolute;
 	width: 100vw;
 	height: 100vw;
-	max-width: 640px;
-	max-height: 640px;
+	max-width: 500px;
+	max-height: 500px;
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex-flow: column nowrap;
 }
 
 .metadata {
-	flex: 1 1 50%;
+	flex: 1 1 80%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
@@ -88,27 +93,27 @@ body {
 	z-index: 5;
 }
 
-.number {
+.metadata > .number {
 	width: 100%;
 	text-align: center;
 	font-size: 400%;
 	font-family: "Share Tech Mono", monospace;	
 }
 
-.track {
+.metadata > .track {
 	width: 100%;
 	text-align: center;
 	font-size: 200%;
 }
 
-.artist {
+.metadata > .artist {
 	width: 100%;
 	text-align: center;
 	font-size: 150%;
 }
 
 .controls {
-	flex: 1 1 40%;
+	flex: 1 1 20%;
 	z-index: 5;
 }
 
@@ -177,9 +182,29 @@ body {
 	color: #0cc;
 }
 
+.playlist-track > .track {
+
+}
+
+.playlist-track > .artist {
+	font-style: italic;
+}
+
 .footer {
     color: #999;
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+@media (max-width: 400px) {
+	.main.open {
+		left: 90%;
+	}
+	.settings {
+		width: 90%;
+	}
+	.menu.open {
+		left: 90%;
+	}
 }

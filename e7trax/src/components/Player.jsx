@@ -63,10 +63,13 @@ class Player extends Component {
         </div>
         <div className={menuClass}
           onClick={this.handleDrawer}>
-          <i className="icon-menu"></i>
+          <i className="icon-settings"></i>
         </div>
         <div className={mainClass}>
           <NowPlaying />
+          <div className="footer">
+            Eureka Seven &copy; Studio BONES, Funimation
+          </div>
         </div>
       </div>
     )

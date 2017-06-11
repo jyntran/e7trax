@@ -10,6 +10,6 @@ app.get('/', function (req, res) {
 app.use('/spotify', routes);
 app.use(express.static('public'));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5050;
 app.listen(port, function () {
   console.log('App listening on port ' + port);});

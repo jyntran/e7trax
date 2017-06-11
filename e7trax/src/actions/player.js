@@ -20,7 +20,7 @@ export const pauseTrack = () => {
 
 export const backTrack = (currentIndex) => {
 	const currIndex = +currentIndex;
-	const songIndex = Math.max(1, currIndex)
+	const songIndex = Math.max(1, currIndex-1)
 	return {
 		type: 'backward',
 		currentIndex: songIndex

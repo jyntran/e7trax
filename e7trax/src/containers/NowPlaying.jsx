@@ -9,8 +9,10 @@ export default class NowPlaying extends Component {
 		return (
 			<div className="nowPlaying">
 				<Music />
-      			<Metadata/>
-        		<Controls/>
+				<div className="playing">
+	      			<Metadata/>
+	        		<Controls/>
+        		</div>
       		</div>
     	)
 	}

@@ -12,7 +12,7 @@ class Playlist extends Component {
   }
 
   onSelect(index) {
-    this.props.actions.selectTrack(index)
+    this.props.actions.playTrack(index)
   }
 
   renderTracks() {

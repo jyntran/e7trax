@@ -15,6 +15,7 @@ export default(state = initialState, action) => {
 		case 'play':
 			return {
 				...state,
+				currentIndex: action.index,
 				isPlaying: true
 			}
 		case 'pause': 

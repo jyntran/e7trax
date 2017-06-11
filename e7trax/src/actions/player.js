@@ -6,9 +6,10 @@ export const storeTracks = (tracks) => {
 	}
 }
 
-export const playTrack = () => {
+export const playTrack = (index) => {
 	return {
-		type: 'play'
+		type: 'play',
+		index
 	}
 }
 

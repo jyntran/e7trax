@@ -14,8 +14,8 @@ class Controls extends Component {
     }
   }
 
-  onPlay() {
-    this.props.actions.playTrack()
+  onPlay(index) {
+    this.props.actions.playTrack(index)
   }
 
   onPause() {
@@ -45,7 +45,7 @@ class Controls extends Component {
               </div>
             :
               <div className="btn btn-play"
-                onClick={() => this.onPlay()}>
+                onClick={() => this.onPlay(this.props.currentIndex)}>
                 <i className="icon-play_arrow"></i>
               </div>
             }

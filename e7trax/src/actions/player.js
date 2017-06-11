@@ -19,7 +19,8 @@ export const pauseTrack = () => {
 }
 
 export const backTrack = (currentIndex) => {
-	const songIndex = Math.max(1, currentIndex-1)
+	const currIndex = +currentIndex;
+	const songIndex = Math.max(1, currIndex)
 	return {
 		type: 'backward',
 		currentIndex: songIndex
@@ -27,9 +28,17 @@ export const backTrack = (currentIndex) => {
 }
 
 export const forwardTrack = (currentIndex, numOfTracks) => {
-	const songIndex = Math.min(currentIndex+1, numOfTracks)
+	const currIndex = +currentIndex
+	const songIndex = Math.min(currIndex+1, numOfTracks)
 	return {
 		type: 'forward',
 		currentIndex: songIndex
+	}
+}
+
+export const selectTrack = (index) => {
+	return {
+		type: 'select',
+		index
 	}
 }

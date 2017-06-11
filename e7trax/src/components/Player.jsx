@@ -6,13 +6,16 @@ import { connect } from 'react-redux';
 import * as playerActions from '../actions/player';
 
 import NowPlaying from '../containers/NowPlaying.jsx';
+import Playlist from '../components/Playlist.jsx';
 
 class Player extends Component {
   constructor(props) {
     super(props)
     this.getPlaylist = this.getPlaylist.bind(this)
     this.storePlaylist = this.storePlaylist.bind(this)
+    this.handleDrawer = this.handleDrawer.bind(this)
     this.state = {
+      drawerOpen: false
     }
   }
 
@@ -39,10 +42,32 @@ class Player extends Component {
     this.props.actions.storeTracks(tracks)
   }
 
+  handleDrawer() {
+    this.setState({
+      drawerOpen: !this.state.drawerOpen
+    })
+  }
+
 	render() {
+    const menuClass =
+      this.state.drawerOpen ? "menu open"
+      : "menu closed"
+    const mainClass =
+      this.state.drawerOpen ? "main open"
+      : "main closed"
+
 		return (
       <div className="player">
-        <NowPlaying />
+        <div className="settings">
+          <Playlist />
+        </div>
+        <div className={menuClass}
+          onClick={this.handleDrawer}>
+          <i className="icon-menu"></i>
+        </div>
+        <div className={mainClass}>
+          <NowPlaying />
+        </div>
       </div>
     )
 	}

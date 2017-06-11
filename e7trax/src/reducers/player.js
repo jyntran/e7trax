@@ -28,6 +28,11 @@ export default(state = initialState, action) => {
 				...state,
 				currentIndex: action.currentIndex
 			}
+		case 'select':
+			return {
+				...state,
+				currentIndex: action.index
+			}
 		default:
 			return state;
 	}

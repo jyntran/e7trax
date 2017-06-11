@@ -57,7 +57,7 @@ class Music extends Component {
   }
 
   handleSongFinished() {
-    this.props.actions.backTrack(this.props.currentIndex)
+    this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks)
   }
 
   handleSongLoading(audio) {
@@ -73,6 +73,14 @@ class Music extends Component {
   }
 
   render() {
+    const strokeVal = (
+      this.state.position === 0 ? '0%' :
+      this.state.position === 1 ? '315%' :
+      (this.state.position * 315 + 10) + '%'
+    )
+    const barStyle = {
+      strokeDashoffset: strokeVal
+    }
     return (
       <div className="music">
           <Sound
@@ -85,6 +93,11 @@ class Music extends Component {
             playFromPosition={this.state.playFromPosition}
             onFinishedPlaying={this.handleSongFinished}
             onLoading={this.handleSongLoading}/>
+            <svg className="music-progress" preserveAspectRatio="none">
+              <circle className="fill" cx="50%" cy="50%" r="50%" fill="none" stroke="#00cccc" strokeWidth="4" />
+              <circle className="bar" cx="50%" cy="50%" r="50%" fill="none" stroke="#333333" strokeWidth="6"
+                style={barStyle}/>
+            </svg>
       </div>
     )
   }
@@ -92,6 +105,7 @@ class Music extends Component {
 
 function mapStateToProps(state, props) {
     return {
+        numberOfTracks: Object.keys(state.player.tracks).length,
         currentSong: state.player.tracks[state.player.currentIndex],
         currentIndex: state.player.currentIndex,
         isPlaying: state.player.isPlaying

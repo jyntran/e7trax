@@ -9,6 +9,9 @@ class App extends Component {
     return (
       <div className="App">
         <Player/>
+        <div className="footer">
+        	Eureka Seven &copy; Studio BONES, Funimation
+        </div>
       </div>
     );
   }

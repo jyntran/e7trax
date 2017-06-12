@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as playerActions from '../actions/player';
+import ClassName from 'classnames';
 
 class Playlist extends Component {
   constructor(props) {
@@ -19,16 +20,18 @@ class Playlist extends Component {
     const tracks = this.props.tracks;
     
     return Object.keys(tracks).map((index) => {
-      const trackClass =
-        this.props.currentIndex == index ?
-          'playlist-track selected'
-        : 'playlist-track'
+      const trackClass = ClassName(
+        'playlist-track',
+        {
+          selected: this.props.currentIndex == index,
+          error: !this.props.tracks[index].preview_url
+        })
 
       return (
         <li key={index}
           className={trackClass}
           onClick={() => this.onSelect(index)}>
-          <span className="track">{tracks[index].name}</span>
+          <span className="track">{tracks[index].name}</span> <span className="error-icon" title="No preview available"><i className="icon-error"></i></span>
           <br/>
           <span className="artist">{tracks[index].artists[0].name}</span>
         </li>

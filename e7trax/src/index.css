@@ -170,6 +170,14 @@ body {
 	stroke-dashoffset: 315%;
 }
 
+.music-progress .fill {
+	stroke: #0cc;
+}
+
+.music-progress .fill.unavailable {
+	stroke: #c00;
+}
+
 .playlist {
 	width: 100%;
 	height: 100vh;
@@ -193,6 +201,15 @@ body {
 
 .playlist-track > .artist {
 	font-style: italic;
+}
+
+.playlist-track .error-icon {
+	color: #c00;
+	visibility: hidden;
+}
+
+.playlist-track.error .error-icon {
+	visibility: visible;
 }
 
 .playlist::-webkit-scrollbar-track

@@ -62,7 +62,6 @@ class Controls extends Component {
 function mapStateToProps(state, props) {
     return {
         numberOfTracks: Object.keys(state.player.tracks).length,
-        currentSong: state.player.tracks[state.player.currentIndex],
         currentIndex: state.player.currentIndex,
         isPlaying: state.player.isPlaying
     };

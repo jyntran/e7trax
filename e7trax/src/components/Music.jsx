@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as playerActions from '../actions/player';
+import ClassName from 'classnames';
 
 import Sound from 'react-sound';
 
@@ -23,9 +24,6 @@ class Music extends Component {
   }
 
   formatMilliseconds(milliseconds) {
-    var hours = Math.floor(milliseconds / 3600000);
-    milliseconds = milliseconds % 3600000;
-
     var minutes = Math.floor(milliseconds / 60000);
     milliseconds = milliseconds % 60000;
 
@@ -81,6 +79,13 @@ class Music extends Component {
     const barStyle = {
       strokeDashoffset: strokeVal
     }
+
+    const fillClass = ClassName(
+      'fill',
+      {
+        unavailable : this.props.currentSong && !this.props.currentSong.preview_url
+      })
+
     return (
       <div className="music">
           <Sound
@@ -94,7 +99,7 @@ class Music extends Component {
             onFinishedPlaying={this.handleSongFinished}
             onLoading={this.handleSongLoading}/>
             <svg className="music-progress" preserveAspectRatio="none">
-              <circle className="fill" cx="50%" cy="50%" r="50%" fill="none" stroke="#00cccc" strokeWidth="4" />
+              <circle className={fillClass} cx="50%" cy="50%" r="50%" fill="none" stroke="#00cccc" strokeWidth="4" />
               <circle className="bar" cx="50%" cy="50%" r="50%" fill="none" stroke="#333333" strokeWidth="6"
                 style={barStyle}/>
             </svg>

@@ -128,7 +128,7 @@ body {
 	cursor: pointer;
 	flex: 0 0 auto;
 	margin: 4px;
-	padding: 12px;
+	padding: 4px;
 	text-align: center;
 	transition: all 0.4s;
 }
@@ -213,6 +213,7 @@ body {
 
 .playlist-track .error-icon {
 	color: #c00;
+	font-size: 90%;
 	visibility: hidden;
 }
 
@@ -238,7 +239,7 @@ body {
 }
 
 .header {
-	margin: auto 24px;
+	margin: auto 12px;
 	padding-top: 24px;
 	background: #222;
 	height: auto;
@@ -260,6 +261,7 @@ body {
 	background: #222;
 	height: auto;
     color: #999;
+    padding: 0 16px;
 }
 
 .about p, .about span {

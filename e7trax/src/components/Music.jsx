@@ -55,7 +55,11 @@ class Music extends Component {
   }
 
   handleSongFinished() {
-    this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks, this.props.tracks)
+    if (this.props.currentIndex == this.props.numberOfTracks) {
+      this.props.actions.stopTrack()
+    } else { 
+      this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks, this.props.tracks)
+    }
   }
 
   handleSongLoading(audio) {
@@ -74,7 +78,7 @@ class Music extends Component {
     const strokeVal = (
       this.state.position === 0 ? '0%' :
       this.state.position === 1 ? '315%' :
-      (this.state.position * 315 + 10) + '%'
+      (this.state.position * 315) + '%'
     )
     const barStyle = {
       strokeDashoffset: strokeVal

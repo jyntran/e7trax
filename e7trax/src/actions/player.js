@@ -29,10 +29,13 @@ export const backTrack = (currentIndex) => {
 }
 
 export const forwardTrack = (currentIndex, numOfTracks, tracks) => {
-	var songIndex = +(currentIndex) + 1
-	while (!tracks[songIndex].preview_url) {
-		songIndex = Math.min(songIndex, numOfTracks)
-		songIndex++
+	var songIndex = +(currentIndex)
+	if (!(currentIndex == numOfTracks)) {
+		songIndex = +(currentIndex) + 1
+		while (!tracks[songIndex].preview_url) {
+			songIndex = Math.min(songIndex, numOfTracks)
+			songIndex++
+		}
 	}
 	return {
 		type: 'forward',
@@ -44,5 +47,11 @@ export const selectTrack = (index) => {
 	return {
 		type: 'select',
 		index
+	}
+}
+
+export const stopTrack = () => {
+	return {
+		type: 'stop'
 	}
 }

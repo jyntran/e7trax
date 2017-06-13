@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as playerActions from '../actions/player';
+import ClassName from 'classnames';
 
 import NowPlaying from '../containers/NowPlaying.jsx';
 import Settings from '../containers/Settings.jsx';
@@ -49,12 +50,12 @@ class Player extends Component {
   }
 
 	render() {
-    const menuClass =
-      this.state.drawerOpen ? "menu open"
-      : "menu closed"
-    const mainClass =
-      this.state.drawerOpen ? "main open"
-      : "main closed"
+    const openClosedClass = {
+        open: this.state.drawerOpen,
+        closed: !this.state.drawerOpen
+      },
+      menuClass = ClassName('menu', openClosedClass),
+      mainClass = ClassName('main', openClosedClass)
 
 		return (
       <div className="player">
@@ -73,9 +74,7 @@ class Player extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        tracks: state.player.tracks,
-        currentSong: state.player.tracks[state.player.currentIndex],
-        isPlaying: state.player.isPlaying
+        tracks: state.player.tracks
     };
 }
 

@@ -27,7 +27,7 @@ class Controls extends Component {
   }
 
   onForward(index, numOfTracks) {
-    this.props.actions.forwardTrack(index, numOfTracks)
+    this.props.actions.forwardTrack(index, numOfTracks, this.props.tracks)
   }
 
     render() {
@@ -61,8 +61,8 @@ class Controls extends Component {
 
 function mapStateToProps(state, props) {
     return {
+        tracks: state.player.tracks,
         numberOfTracks: Object.keys(state.player.tracks).length,
-        currentSong: state.player.tracks[state.player.currentIndex],
         currentIndex: state.player.currentIndex,
         isPlaying: state.player.isPlaying
     };

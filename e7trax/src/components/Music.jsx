@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as playerActions from '../actions/player';
+import ClassName from 'classnames';
 
 import Sound from 'react-sound';
 
@@ -23,9 +24,6 @@ class Music extends Component {
   }
 
   formatMilliseconds(milliseconds) {
-    var hours = Math.floor(milliseconds / 3600000);
-    milliseconds = milliseconds % 3600000;
-
     var minutes = Math.floor(milliseconds / 60000);
     milliseconds = milliseconds % 60000;
 
@@ -57,7 +55,11 @@ class Music extends Component {
   }
 
   handleSongFinished() {
-    this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks)
+    if (this.props.currentIndex == this.props.numberOfTracks) {
+      this.props.actions.stopTrack()
+    } else { 
+      this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks, this.props.tracks)
+    }
   }
 
   handleSongLoading(audio) {
@@ -76,11 +78,18 @@ class Music extends Component {
     const strokeVal = (
       this.state.position === 0 ? '0%' :
       this.state.position === 1 ? '315%' :
-      (this.state.position * 315 + 10) + '%'
+      (this.state.position * 315) + '%'
     )
     const barStyle = {
       strokeDashoffset: strokeVal
     }
+
+    const fillClass = ClassName(
+      'fill',
+      {
+        unavailable : this.props.currentSong && !this.props.currentSong.preview_url
+      })
+
     return (
       <div className="music">
           <Sound
@@ -94,7 +103,7 @@ class Music extends Component {
             onFinishedPlaying={this.handleSongFinished}
             onLoading={this.handleSongLoading}/>
             <svg className="music-progress" preserveAspectRatio="none">
-              <circle className="fill" cx="50%" cy="50%" r="50%" fill="none" stroke="#00cccc" strokeWidth="4" />
+              <circle className={fillClass} cx="50%" cy="50%" r="50%" fill="none" stroke="#00cccc" strokeWidth="4" />
               <circle className="bar" cx="50%" cy="50%" r="50%" fill="none" stroke="#333333" strokeWidth="6"
                 style={barStyle}/>
             </svg>
@@ -105,10 +114,12 @@ class Music extends Component {
 
 function mapStateToProps(state, props) {
     return {
+        tracks: state.player.tracks,
         numberOfTracks: Object.keys(state.player.tracks).length,
         currentSong: state.player.tracks[state.player.currentIndex],
         currentIndex: state.player.currentIndex,
-        isPlaying: state.player.isPlaying
+        isPlaying: state.player.isPlaying,
+        isStarted: state.player.isStarted
     };
 }
 

@@ -91,18 +91,16 @@ body {
 }
 
 .playing {
+	width: 100%;
+	height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-flow: column nowrap;
 	z-index: 2;
 }
 
-.metadata {
-	flex: 1 1 80%;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	flex-flow: column nowrap;
-}
-
-.metadata > .number {
+.number {
 	text-align: center;
 	font-size: 400%;
 	font-family: "Share Tech Mono", monospace;
@@ -110,22 +108,11 @@ body {
 	background: #eee;
 	padding: 0 2px;
 	margin-bottom: 12px;
-}
-
-.metadata > .track {
-	width: 100%;
-	text-align: center;
-	font-size: 200%;
-}
-
-.metadata > .artist {
-	width: 100%;
-	text-align: center;
-	font-size: 150%;
+	flex: 0 0 auto;
 }
 
 .controls {
-	flex: 1 1 20%;
+	flex: 0 0 auto;
 }
 
 .control-box {
@@ -144,6 +131,27 @@ body {
 	padding: 12px;
 	text-align: center;
 	transition: all 0.4s;
+}
+
+.metadata {
+	flex: 0 0 50%;
+	display: flex;
+	align-items: center;
+	flex-flow: column nowrap;
+}
+
+.metadata > .track {
+	width: 100%;
+	text-align: center;
+	font-size: 200%;
+	flex: 0 0 20%;
+}
+
+.metadata > .artist {
+	width: 100%;
+	text-align: center;
+	font-size: 150%;
+	flex: 0 0 20%;
 }
 
 .music {

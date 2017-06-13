@@ -55,7 +55,7 @@ class Music extends Component {
   }
 
   handleSongFinished() {
-    this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks)
+    this.props.actions.forwardTrack(this.props.currentIndex, this.props.numberOfTracks, this.props.tracks)
   }
 
   handleSongLoading(audio) {
@@ -110,10 +110,12 @@ class Music extends Component {
 
 function mapStateToProps(state, props) {
     return {
+        tracks: state.player.tracks,
         numberOfTracks: Object.keys(state.player.tracks).length,
         currentSong: state.player.tracks[state.player.currentIndex],
         currentIndex: state.player.currentIndex,
-        isPlaying: state.player.isPlaying
+        isPlaying: state.player.isPlaying,
+        isStarted: state.player.isStarted
     };
 }
 

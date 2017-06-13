@@ -1,7 +1,8 @@
 const initialState = {
 	tracks: {},
 	currentIndex: null,
-	isPlaying: false
+	isPlaying: false,
+	isStarted: false
 }
 
 export default(state = initialState, action) => {
@@ -16,7 +17,8 @@ export default(state = initialState, action) => {
 			return {
 				...state,
 				currentIndex: action.index,
-				isPlaying: true
+				isPlaying: true,
+				isStarted: true
 			}
 		case 'pause': 
 			return {

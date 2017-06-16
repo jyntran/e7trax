@@ -2,25 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Metadata extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-
-	padDigits(num) {
-		return ("0" + num).slice(-2)
-	}
-
-	renderNumber() {
-		return (
-			<span>
-				{this.props.currentSong ?
-					this.padDigits(this.props.currentIndex)
-					: null}
-			</span>
-		)
-	}
-
 	renderTrack() {
 		return (
 			<span>
@@ -44,15 +25,12 @@ class Metadata extends Component {
 	render() {
 		return (
 	      <div className="metadata">
-	      	<div className="number">
-	      	{this.renderNumber()}
-	      	</div>
 	        <div className="track">
-            {this.renderTrack()}
-          </div>
-          <div className="artist">
-            {this.renderArtist()}
-          </div>
+	            {this.renderTrack()}
+	        </div>
+            <div className="artist">
+            	{this.renderArtist()}
+            </div>
 	      </div>
     )
 	}
@@ -63,8 +41,7 @@ function mapStateToProps(state, props) {
     if (state.player.currentIndex !== null)
       currentIndex = state.player.currentIndex.toString();
     return {
-        currentSong: state.player.tracks[currentIndex],
-        currentIndex: state.player.currentIndex
+        currentSong: state.player.tracks[currentIndex]
     };
 }
 

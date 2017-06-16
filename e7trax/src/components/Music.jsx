@@ -77,8 +77,8 @@ class Music extends Component {
   render() {
     const strokeVal = (
       this.state.position === 0 ? '0%' :
-      this.state.position === 1 ? '315%' :
-      (this.state.position * 315) + '%'
+      this.state.position === 1 ? '318%' :
+      (this.state.position * 318 + 8) + '%'
     )
     const barStyle = {
       strokeDashoffset: strokeVal

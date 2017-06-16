@@ -1,0 +1,10 @@
+.number {
+  text-align: center;
+  font-size: 400%;
+  font-family: "Share Tech Mono", monospace;
+  color: #222;
+  background: #eee;
+  padding: 0 2px;
+  margin-bottom: 12px;
+  flex: 0 0 auto;
+}

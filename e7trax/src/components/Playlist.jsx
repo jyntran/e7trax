@@ -31,7 +31,7 @@ class Playlist extends Component {
         <li key={index}
           className={trackClass}
           onClick={() => this.onSelect(index)}>
-          <span className="track">{tracks[index].name}</span> <span className="error-icon" title="No preview available"><i className="icon-error"></i></span>
+          <span className="track">{tracks[index].name}</span> <i className="error-icon icon-error" title="No preview available" aria-hidden="true"></i>
           <br/>
           <span className="artist">{tracks[index].artists[0].name}</span>
         </li>

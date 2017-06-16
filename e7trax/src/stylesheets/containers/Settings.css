@@ -1,0 +1,56 @@
+.settings {
+  background: #222;
+  color: #ddd;
+  width: 360px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  transition: all 0.6s ease;
+}
+
+.header {
+  margin: auto 12px;
+  padding-top: 24px;
+  background: #222;
+  height: auto;
+}
+
+.header h1 {
+  color: #eee;
+  font-family: "Share Tech Mono", monospace;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.header > div:last-child {
+  border-bottom: 1px solid #555;
+  background: #222;
+}
+
+.about {  
+  background: #222;
+  height: auto;
+  color: #999;
+  padding: 0 16px;
+}
+
+.about p, .about span {
+  font-size: 75%;
+}
+
+.about em {
+  color: #222;
+  background: #0BE3A6;
+  padding-right: 1px;
+  font-style: normal;
+}
+
+.about a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.4s;
+}

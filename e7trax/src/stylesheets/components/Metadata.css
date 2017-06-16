@@ -1,0 +1,20 @@
+.metadata {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.metadata > .track {
+  width: 100%;
+  text-align: center;
+  font-size: 200%;
+  flex: 0 0 20%;
+}
+
+.metadata > .artist {
+  width: 100%;
+  text-align: center;
+  font-size: 150%;
+  flex: 0 0 20%;
+}

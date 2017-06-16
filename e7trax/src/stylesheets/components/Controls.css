@@ -1,0 +1,21 @@
+.controls {
+  flex: 0 0 auto;
+}
+
+.control-box {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  max-width: 50%;
+  text-align: center;
+}
+
+.control-box > .btn {
+  background: none;
+  cursor: pointer;
+  flex: 0 0 auto;
+  margin: 4px;
+  padding: 4px;
+  text-align: center;
+  transition: all 0.4s;
+}

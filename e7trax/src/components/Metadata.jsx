@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Metadata extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-
 	renderTrack() {
 		return (
 			<span>

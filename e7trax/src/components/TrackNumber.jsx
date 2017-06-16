@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class TrackNumber extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-
 	padDigits(num) {
 		return ("0" + num).slice(-2)
 	}

@@ -19,9 +19,12 @@ export const pauseTrack = () => {
 	}
 }
 
-export const backTrack = (currentIndex) => {
-	const currIndex = +currentIndex;
-	const songIndex = Math.max(1, currIndex-1)
+export const backTrack = (currentIndex, tracks) => {
+	var songIndex = +(currentIndex) - 1
+	while (!tracks[songIndex].preview_url) {
+		songIndex = Math.max(1, songIndex-1)
+		songIndex--
+	}
 	return {
 		type: 'backward',
 		currentIndex: songIndex

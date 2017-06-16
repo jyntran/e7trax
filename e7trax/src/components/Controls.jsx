@@ -23,7 +23,7 @@ class Controls extends Component {
   }
 
   onBack(index) {
-    this.props.actions.backTrack(index)
+    this.props.actions.backTrack(index, this.props.tracks)
   }
 
   onForward(index, numOfTracks) {

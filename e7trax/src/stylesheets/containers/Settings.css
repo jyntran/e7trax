@@ -30,27 +30,3 @@
   border-bottom: 1px solid #555;
   background: #222;
 }
-
-.about {  
-  background: #222;
-  height: auto;
-  color: #999;
-  padding: 0 16px;
-}
-
-.about p, .about span {
-  font-size: 75%;
-}
-
-.about em {
-  color: #222;
-  background: #0BE3A6;
-  padding-right: 1px;
-  font-style: normal;
-}
-
-.about a {
-  color: #ccc;
-  text-decoration: none;
-  transition: all 0.4s;
-}

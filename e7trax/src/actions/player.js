@@ -1,8 +1,9 @@
-export const storeTracks = (tracks) => {
+export const storeTracks = (tracks, url) => {
 	return {
 		type: 'store',
 		tracks: tracks,
-		currentIndex: 1
+		currentIndex: 1,
+		playlistUrl: url
 	}
 }
 

@@ -35,12 +35,13 @@ class Player extends Component {
       })
   }
 
-  storePlaylist(list) {
+  storePlaylist(playlist) {
+    const url = playlist.external_urls.spotify
     var tracks = {}
-    list.forEach(function(obj, i) {
+    playlist.tracks.items.forEach(function(obj, i) {
       tracks[i+1] = obj.track
     })
-    this.props.actions.storeTracks(tracks)
+    this.props.actions.storeTracks(tracks, url)
   }
 
   handleDrawer() {

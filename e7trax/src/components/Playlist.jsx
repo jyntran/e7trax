@@ -44,15 +44,13 @@ class Playlist extends Component {
             <span className="artist">{tracks[index].artists[0].name}</span>
           </div>
           <div className="track-status">
-            <i className="icon-play_arrow" aria-hidden="true"></i>
-            <i className="icon-graphic_eq" aria-hidden="true"></i>
+            <i className="icon-play_arrow" aria-hidden="true" title="Play track"></i>
+            <i className="icon-graphic_eq" aria-hidden="true" title="Currently playing"></i>
             <i className="icon-warning" aria-hidden="true" title="No preview available"></i>
           </div>  
-          <div className="track-link">
-            <a href={tracks[index].external_urls.spotify} target="_blank" title="Open on Spotify">
-              <i className="icon-link" aria-hidden="true"></i>
-            </a>
-          </div>  
+          <a className="track-link" href={tracks[index].external_urls.spotify} target="_blank" title="Open on Spotify">
+            <i className="icon-link" aria-hidden="true"></i>
+          </a>
         </li>
       )
     })

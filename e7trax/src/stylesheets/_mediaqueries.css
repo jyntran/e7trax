@@ -1,0 +1,10 @@
+@media (max-width: 400px) {
+  .main.open,
+  .menu.open {
+    left: 90%;
+  }
+
+  .settings {
+    width: 90%;
+  }
+}

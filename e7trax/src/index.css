@@ -11,3 +11,5 @@
 @import './stylesheets/containers/Settings.css';
 @import './stylesheets/components/About.css';
 @import './stylesheets/components/Playlist.css';
+
+@import './stylesheets/_mediaqueries.css';

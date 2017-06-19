@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import About from '../components/About.jsx';
 import Playlist from '../components/Playlist.jsx';
 
 export default class Settings extends Component {
@@ -7,14 +8,10 @@ export default class Settings extends Component {
 		return (
 			<div className="settings">
 				<div className="header">
-		          <div className="about">
-		          	<h1 className="title">e7 trax</h1>
-		            <p>Eureka Seven &copy; Studio BONES, Funimation</p>
-		            <p>Made with love by <a href="http://jyntran.ca" title="jyntran.ca">Jensen Tran</a></p>
-		          </div>
+					<About/>
 				</div>
 				<Playlist />
-      		</div>
+  		</div>
     	)
 	}
 }

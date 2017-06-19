@@ -2,7 +2,8 @@ const initialState = {
 	tracks: {},
 	currentIndex: null,
 	isPlaying: null,
-	isStarted: false
+	isStarted: false,
+	playlistUrl: ''
 }
 
 export default(state = initialState, action) => {
@@ -12,6 +13,7 @@ export default(state = initialState, action) => {
 				...state,
 				tracks: action.tracks,
 				currentIndex: action.currentIndex,
+				playlistUrl: action.playlistUrl
 			}
 		case 'play':
 			return {

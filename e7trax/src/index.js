@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 import Store from './store';
 import './index.css';
 
-const PlayerInstance = Store(applyMiddleware(logger));
+const PlayerInstance = process.env.NODE_ENV === 'development' ? Store(applyMiddleware(logger)) : Store();
 
 ReactDOM.render(
 	<Provider store={PlayerInstance}>
